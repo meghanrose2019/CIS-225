@@ -1,0 +1,35 @@
+/**
+ * A program for Rick Hammer to compute prices of desks.
+ *
+ * @author Meghan Reed
+ * @version 2020.01.31
+ */
+public class Desks
+{
+    // The minimum price of a desk.
+    private int price;
+    // The total amount of money to be collected.
+    private int total;
+    //Customer Name
+    private string[] name;
+
+    /**
+     * Constructor for objects of class Desks
+     */
+    public Desks(String[] name, int order, int width, int length, int drawer)
+    {
+        // Desk Variables
+        ;
+      
+        
+    }
+
+    /**
+     * creates user name
+     */
+    public int getWidth()
+    {
+        // asks user to put in 
+        
+    }
+}
