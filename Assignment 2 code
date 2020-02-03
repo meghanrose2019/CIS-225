@@ -1,4 +1,3 @@
-
 /**
  * A program for Rick Hammer to compute prices of desks.
  *
@@ -14,7 +13,9 @@ public class Desks
     // The length of the desk
     private int length;
     // The type of wood for desk
-    
+    private string woodType;
+    //The number of drawers
+    private int drawers;
 
     /**
      * Constructor for objects of class Desks
@@ -56,15 +57,33 @@ public class Desks
     }
     
     /**
-     * If statement for surface area
+     * If statement for woodType
      */
     public int getWood()
     {
-        if (wood = "p")
+        if (woodType = "p")
             return price;
-        else if (wood = "o") 
+        else if (woodType = "o") 
             price = price + 125;
-        else if (wood = "m")
+        else if (woodType = "m")
             price = price + 150;
+    }
+    
+    /**
+     * While loop for drawers
+     */
+    public int getDrawers()
+    {
+        while (drawers > 0)
+            price = price + 30;
+        return price;
+    }
+    
+    /**
+     * The total price
+     */
+    public int Total()
+    {
+        return price;
     }
 }
