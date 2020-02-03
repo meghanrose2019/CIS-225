@@ -1,3 +1,4 @@
+
 /**
  * A program for Rick Hammer to compute prices of desks.
  *
@@ -6,30 +7,64 @@
  */
 public class Desks
 {
-    // The minimum price of a desk.
+    // The price of a desk.
     private int price;
-    // The total amount of money to be collected.
-    private int total;
-    //Customer Name
-    private string[] name;
+    // The width of the desk
+    private int width;
+    // The length of the desk
+    private int length;
+    // The type of wood for desk
+    
 
     /**
      * Constructor for objects of class Desks
      */
-    public Desks(String[] name, int order, int width, int length, int drawer)
+    public Desks()
     {
         // Desk Variables
-        ;
+        price = 200;
+        return Total();
       
         
     }
 
     /**
-     * creates user name
+     * Asks for length of desk inches
+     */
+    public int getLength()
+    {
+        return length;
+    }
+    
+    /**
+     * Asks for width of desk inches
      */
     public int getWidth()
     {
-        // asks user to put in 
-        
+        return width;
+    }
+    
+    /**
+     * If statement for surface area
+     */
+    public int getArea()
+    {
+        if (width * length > 750)
+            price = price + 50;
+        else 
+            return price;
+    }
+    
+    /**
+     * If statement for surface area
+     */
+    public int getWood()
+    {
+        if (wood = "p")
+            return price;
+        else if (wood = "o") 
+            price = price + 125;
+        else if (wood = "m")
+            price = price + 150;
     }
 }
