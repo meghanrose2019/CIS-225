@@ -1,0 +1,87 @@
+/**
+ * Creates a book
+ *
+ * @author Meghan Reed
+ * @version 11.02.2020
+ */
+public class Book
+{
+    // instance variables - replace the example below with your own
+    private String title;
+    
+    private String author;
+    
+    private int ISBN;
+    
+    private String date;
+    
+    private int pages;
+
+    /**
+     * Constructor for objects of class Book
+     */
+    public Book(String title, String author, int ISBN, String date, int pages)
+    {
+        // initialise instance variables
+        this.title = title;
+        this.author = author;
+        this.ISBN = ISBN;
+        this.date = date;
+        this.pages = pages;
+    }
+
+    /**
+     * Get the Book Title
+     *
+     *
+     */
+    public String getTitle()
+    {
+        // put your code here
+        return title;
+    }
+    
+    /**
+     * Get the name of the author
+     *
+     *
+     */
+    public String getAuthor()
+    {
+        // put your code here
+        return author;
+    }
+    
+    /**
+     * Get the ISBN number
+     *
+     *
+     */
+    public int getISBN()
+    {
+        // put your code here
+        return ISBN;
+    }
+    
+    /**
+     * Get the publication date
+     *
+     *
+     */
+    public String getDate()
+    {
+        // put your code here
+        return date;
+    }
+    
+    /**
+     * Get the number of pages
+     *
+     *
+     */
+    public int getPages()
+    {
+        // put your code here
+        return pages;
+    }
+}
