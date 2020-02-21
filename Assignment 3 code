@@ -35,9 +35,13 @@ public class Book
      *
      *
      */
-    public String getTitle()
+    public void getTitle(String title)
     {
-        // put your code here
+       this.title = title;
+    }
+    
+    public String setTitle()
+    {
         return title;
     }
     
@@ -46,9 +50,13 @@ public class Book
      *
      *
      */
-    public String getAuthor()
+    public void getAuthor(String author)
     {
-        // put your code here
+        this.author = author;
+    }
+    
+    public String setAuthor()
+    {
         return author;
     }
     
@@ -57,9 +65,13 @@ public class Book
      *
      *
      */
-    public int getISBN()
+    public void getISBN(int ISBN)
     {
-        // put your code here
+        this.ISBN = ISBN;
+    }
+    
+    public int setISBN()
+    {
         return ISBN;
     }
     
@@ -68,9 +80,13 @@ public class Book
      *
      *
      */
-    public String getDate()
+    public void getDate(String date)
     {
-        // put your code here
+        this.date = date;
+    }
+    
+    public String setDate()
+    {
         return date;
     }
     
@@ -79,22 +95,18 @@ public class Book
      *
      *
      */
-    public int getPages()
+    public void getPages(int pages)
     {
-        // put your code here
+        this.pages = pages;
+    }
+    
+    public int setPages()
+    {
         return pages;
     }
 }
 
 
-
-
-/**
- * Library to obtain book
- *
- * @author Meghan Reed
-  @version (17.02.2020)
- /
 public class Library
 {
     
@@ -102,16 +114,6 @@ public class Library
     
     private int counter;
     
-    private String title;
-    
-    private String author;
-    
-    private int ISBN;
-    
-    private String date;
-    
-    private int pages;
-
     /**
      * Constructor for objects of class Library
      */
@@ -119,6 +121,16 @@ public class Library
     {
         // initialise instance variables
         counter = 0;
-        books[counter] = new Book(String author, int ISBN, String title, String date, int pages);
+    }
+    
+    public void setBook(String title, String author, int ISBN, String date, int pages)
+    {
+      books[counter] = new Book(title, author, ISBN, date, pages);
+      counter++;
+    }
+    
+        public Book getBooks(int whichBook)
+    {
+        return books [whichBook];
     }
 }
