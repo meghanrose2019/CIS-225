@@ -1,4 +1,3 @@
-
 /**
  *
  * @author Meghan Reed
@@ -37,3 +36,13 @@ public class Design
     {
         return feature;
     }
+    
+    public void setDesignPrice(int designPrice)
+    {
+    }
+    
+    public void setFeaturePrice(int featurePrice)
+    { 
+    }
+}
+
