@@ -1,0 +1,39 @@
+
+/**
+ *
+ * @author Meghan Reed
+ * @version 22.02.2020
+ */
+public class Design
+{
+    private String design;
+    private int feature;
+    private int featurePrice;
+    private int designPrice;
+    private int totalPrice;
+    
+    public Design(String design, int feature)
+    {
+        this.design = design; 
+        this.feature = feature;
+    }
+    
+    public void setDesign(String design)
+    {
+        this.design = design;
+    }
+    
+    public String getDesign()
+    {
+        return design;
+    }
+    
+    public void setFeature(int feature)
+    {
+        this.feature = feature;
+    }
+    
+    public int getFeature()
+    {
+        return feature;
+    }
