@@ -1,3 +1,44 @@
+public class Website
+{
+    // instance variables - replace the example below with your own
+    private ArrayList<Design> websites;
+    private int counter;
+    private String customerName;
+    private int customerNum;
+    
+    public Website()
+    {
+        counter = 0;
+    }
+
+    public void makeWebsite(String design, int feature)
+    {
+        websites.add(new Design(design, feature));
+    }
+    
+    public void setCustomerNum(int customerNum)
+    {
+        this.customerNum = customerNum;
+    }
+    
+    public int getCustomerNum()
+    {
+        return customerNum;
+    }
+    
+    public void setCustomerName(String customerName)
+    {
+        this.customerName = customerName;
+    }
+    
+    public String getCustomerName()
+    {
+        return customerName;
+    }
+}
+
+
+
 /**
  *
  * @author Meghan Reed
@@ -10,11 +51,15 @@ public class Design
     private int featurePrice;
     private int designPrice;
     private int totalPrice;
+    private int counter;
     
     public Design(String design, int feature)
     {
         this.design = design; 
         this.feature = feature;
+        featurePrice = 0; 
+        designPrice = 0;
+        totalPrice = 0;
     }
     
     public void setDesign(String design)
@@ -37,12 +82,121 @@ public class Design
         return feature;
     }
     
-    public void setDesignPrice(int designPrice)
+     public void setDesignPrice(int designPrice)
     {
+        if (design = Nature){
+            designPrice = 300;
+        }else if (design = Tech){
+            designPrice = 350;
+        }else if (design = Business){
+            designPrice = 375;
+        }else if (design = Music){
+            designPrice = 400;
+        }else if(design = Naughty){
+            designPrice = 500;
+        }
+    }
+    
+    public int getDesignPrice()
+    {
+        return designPrice;
     }
     
     public void setFeaturePrice(int featurePrice)
-    { 
+    {
+        if (feature = 1){
+            for (design = Nature){
+                featurePrice = 10;
+            }
+            for (design = Tech){
+                featurePrice = 20;
+            }
+            for (design = Business){
+                featurePrice = 30;
+            }
+            for (design = Music){
+                featurePrice = 85;
+            }
+            for (design = Naughty){
+                featurePrice = 100;
+            }
+        }
+        if (feature = 2){
+            for (design = Nature){
+                featurePrice = 15;
+            }
+            for (design = Tech){
+                featurePrice = 30;
+            }
+            for (design = Business){
+                featurePrice = 40;
+            }
+            for (design = Music){
+                featurePrice = 95;
+            }
+            for (design = Naughty){
+                featurePrice = 200;
+            }
+        }
+        if (feature = 3){
+            for (design = Nature){
+                featurePrice = 20;
+            }
+            for (design = Tech){
+                featurePrice = 40;
+            }
+            for (design = Business){
+                featurePrice = 50;
+            }
+            for (design = Music){
+                featurePrice = 110;
+            }
+            for (design = Naughty){
+                featurePrice = 300;
+            }
+        }
+        if (feature = 4){
+            for (design = Nature){
+                featurePrice = 25;
+            }
+            for (design = Tech){
+                featurePrice = 50;
+            }
+            for (design = Business){
+                featurePrice = 60;
+            }
+            for (design = Music){
+                featurePrice = 130;
+            }
+            for (design = Naughty){
+                featurePrice = 400;
+            }
+        }
+        if (feature = 5){
+            for (design = Nature){
+                featurePrice = 30;
+            }
+            for (design = Tech){
+                featurePrice = 60;
+            }
+            for (design = Business){
+                featurePrice = 70;
+            }
+            for (design = Music){
+                featurePrice = 210;
+            }
+            for (design = Naughty){
+                featurePrice = 500;
+            }
+        }
     }
-}
-
+    
+    public void setTotalPrice()
+    {
+        totalPrice = featurePrice + designPrice;
+    }
+    
+    public int getTotalPrice()
+    {
+        return totalPrice;
+    }
