@@ -1,19 +1,25 @@
-public class Website
+import java.util.ArrayList;
+/**
+ * @author Meghan Reed
+ * @version 22.02.2020
+ */
+public class Customer
 {
     // instance variables - replace the example below with your own
     private ArrayList<Design> websites;
     private int counter;
     private String customerName;
     private int customerNum;
+    private String customerAddress;
     
-    public Website()
+    public Customer()
     {
-        counter = 0;
+    
     }
 
-    public void makeWebsite(String design, int feature)
+    public void makeWebsite(String design)
     {
-        websites.add(new Design(design, feature));
+        websites.add(new Design(design));
     }
     
     public void setCustomerNum(int customerNum)
@@ -35,7 +41,18 @@ public class Website
     {
         return customerName;
     }
+    
+    public void setCustomerAddress(String customerAddress)
+    {
+        this.customerAddress = customerAddress;
+    }
+    
+    public String getCustomerAddress()
+    {
+        return customerAddress;
+    }
 }
+
 
 
 
@@ -47,24 +64,27 @@ public class Website
 public class Design
 {
     private String design;
-    private int feature;
-    private int featurePrice;
     private int designPrice;
     private int totalPrice;
-    private int counter;
+    private boolean feat1;
+    private int featurePrice1;
+    private boolean feat2;
+    private int featurePrice2;
+    private boolean feat3;
+    private int featurePrice3;
+    private boolean feat4;
+    private int featurePrice4;
+    private boolean feat5;
+    private int featurePrice5;
     
-    public Design(String design, int feature)
-    {
-        this.design = design; 
-        this.feature = feature;
-        featurePrice = 0; 
-        designPrice = 0;
-        totalPrice = 0;
-    }
-    
-    public void setDesign(String design)
+    public Design(String design)
     {
         this.design = design;
+    }
+    
+    public void setDesign(String design) 
+    {
+        this.design = design.trim();
     }
     
     public String getDesign()
@@ -72,131 +92,87 @@ public class Design
         return design;
     }
     
-    public void setFeature(int feature)
+     public int getDesignPrice()
     {
-        this.feature = feature;
-    }
-    
-    public int getFeature()
-    {
-        return feature;
-    }
-    
-     public void setDesignPrice(int designPrice)
-    {
-        if (design = Nature){
-            designPrice = 300;
-        }else if (design = Tech){
-            designPrice = 350;
-        }else if (design = Business){
-            designPrice = 375;
-        }else if (design = Music){
-            designPrice = 400;
-        }else if(design = Naughty){
-            designPrice = 500;
+        if (design.equals("nature"))
+            {
+            featurePrice1 = 10;
+            featurePrice2 = 15;
+            featurePrice3 = 20;
+            featurePrice4 = 25;
+            featurePrice5 = 30;
         }
-    }
-    
-    public int getDesignPrice()
-    {
+        else if (design.equals("tech"))
+        {
+            designPrice = 350;
+            featurePrice1 = 20;
+            featurePrice2 = 30;
+            featurePrice3 = 40;
+            featurePrice4 = 50;
+            featurePrice5 = 60;
+        }
+        else if (design.equals("business"))
+        { 
+            designPrice = 375;
+            featurePrice1 = 10;
+            featurePrice2 = 15;
+            featurePrice3 = 20;
+            featurePrice4 = 25;
+            featurePrice5 = 30;
+        }
+        else if (design.equals("music"))
+        {
+            designPrice = 400;
+            featurePrice1 = 85;
+            featurePrice2 = 95;
+            featurePrice3 = 110;
+            featurePrice4 = 130;
+            featurePrice5 = 210;
+        }
+        else if(design.equals("naughty"))
+        {
+            designPrice = 500;
+            featurePrice1 = 100;
+            featurePrice2 = 200;
+            featurePrice3 = 300;
+            featurePrice4 = 400;
+            featurePrice5 = 500;
+        }
+        
         return designPrice;
     }
     
-    public void setFeaturePrice(int featurePrice)
+    public void setFeaturePrice(boolean feat1, boolean feat2, boolean feat3, boolean feat4, boolean feat5) // <--- 
     {
-        if (feature = 1){
-            for (design = Nature){
-                featurePrice = 10;
-            }
-            for (design = Tech){
-                featurePrice = 20;
-            }
-            for (design = Business){
-                featurePrice = 30;
-            }
-            for (design = Music){
-                featurePrice = 85;
-            }
-            for (design = Naughty){
-                featurePrice = 100;
-            }
+        if (feat1 == false)
+        {               
+            featurePrice1 = 0;
         }
-        if (feature = 2){
-            for (design = Nature){
-                featurePrice = 15;
-            }
-            for (design = Tech){
-                featurePrice = 30;
-            }
-            for (design = Business){
-                featurePrice = 40;
-            }
-            for (design = Music){
-                featurePrice = 95;
-            }
-            for (design = Naughty){
-                featurePrice = 200;
-            }
+        if (feat2 == false)
+        {
+            featurePrice2 = 0;
         }
-        if (feature = 3){
-            for (design = Nature){
-                featurePrice = 20;
-            }
-            for (design = Tech){
-                featurePrice = 40;
-            }
-            for (design = Business){
-                featurePrice = 50;
-            }
-            for (design = Music){
-                featurePrice = 110;
-            }
-            for (design = Naughty){
-                featurePrice = 300;
-            }
+        if (feat3 == false)
+        {
+            featurePrice3 = 0;
         }
-        if (feature = 4){
-            for (design = Nature){
-                featurePrice = 25;
-            }
-            for (design = Tech){
-                featurePrice = 50;
-            }
-            for (design = Business){
-                featurePrice = 60;
-            }
-            for (design = Music){
-                featurePrice = 130;
-            }
-            for (design = Naughty){
-                featurePrice = 400;
-            }
+        if (feat4 == false)
+        {
+            featurePrice4 = 0;
         }
-        if (feature = 5){
-            for (design = Nature){
-                featurePrice = 30;
-            }
-            for (design = Tech){
-                featurePrice = 60;
-            }
-            for (design = Business){
-                featurePrice = 70;
-            }
-            for (design = Music){
-                featurePrice = 210;
-            }
-            for (design = Naughty){
-                featurePrice = 500;
-            }
+        if (feat5 == false)
+        {
+            featurePrice5 = 0;
         }
     }
     
     public void setTotalPrice()
     {
-        totalPrice = featurePrice + designPrice;
+        totalPrice = featurePrice1 + featurePrice2 + featurePrice3 + featurePrice4 + featurePrice5 + designPrice;
     }
     
     public int getTotalPrice()
     {
         return totalPrice;
     }
+}
