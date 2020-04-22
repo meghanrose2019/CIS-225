@@ -1,1 +1,109 @@
+import java.util.Random;
+import java.util.ArrayList;
+/**
+ * Dice Roll
+ *
+ * @author (Meghan Reed)
+ * @version (20.04.2020)
+ */
+public class DiceRoll
+{
+    private final Random roll;
+    private Dice dice;
+    private int totalroll;
+    private ArrayList<Integer> oneRolls;
+    private Random dieRoll;
+    private int[] diceRolls;
 
+    /**
+     * Constructor for objects of class Dice
+     */
+    public DiceRoll(int dieType, int dieQty, int targetNumber)
+    {       
+        dice = new Dice(dieType);
+        this.roll = new Random();
+        dieRoll = roll;
+    }
+    
+    public int rollDice(int dieQty, int dieType, int numRolls) {
+        int totalRoll = 0;
+        int[] diceRolls = new int[numRolls];
+        for (int i = 0; numRolls > 1; i++) {
+            diceRolls[i] = 1 + roll.nextInt(dieType);
+            totalRoll += diceRolls[i];
+            numRolls--;
+        }
+        return totalRoll;
+    }
+    
+    public int oneRolls()   {
+        if (dieRoll = 1){
+            oneRolls.add();
+        }
+        else { 
+        return oneRolls;
+    }
+    }
+    
+    public String Busted()  {
+        if (oneRolls > (diceRolls / 2)){
+        System.out.println("You have busted!");
+    } else {
+        System.out.println("You won!");
+    }
+}
+}
+
+import java.util.Random;
+/**
+ * Dice program
+ *
+ * @author (Meghan Reed)
+ * @version (20.04.2020)
+ */
+public class Dice
+{
+    private int dieType;
+
+    /**
+     */
+    public Dice(int dieType)
+    {
+        this.setDieType(dieType);
+    }
+
+    public void setDieType(int dieType)
+    {
+        final int D4 = 4;
+        final int D6 = 6;
+        final int D8 = 8;
+        final int D10 = 10;
+        final int D12 = 12;
+        final int D20 = 20;
+        final int D100 = 100;
+        if (dieType == D4) {
+            this.dieType = D4;
+        } else if (dieType == D6) {
+            this.dieType = D6;
+        } else if (dieType == D8) {
+            this.dieType = D8;
+        } else if (dieType == D10) {
+            this.dieType = D10;
+        } else if (dieType == D12) {
+            this.dieType = D12;
+        }else if (dieType == D20) {
+            this.dieType = D20;
+        }else if (dieType == D100) {
+            this.dieType = D100;
+        } else {            
+            System.out.println("Invaild Die Type");
+        }
+    }
+    
+    public int getDieType()
+    {
+        return dieType;
+    }
+    
+    
+}
