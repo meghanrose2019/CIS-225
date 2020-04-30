@@ -1,1 +1,95 @@
+import java.util.Scanner;
+/**
+ * Tic Tac Toe game with another player
+ *
+ * @author (Meghan Reed)
+ * @version (27.04.2020)
+ */
+public class TicTacToe {
+    //Create grid 
+    private Cell[][] grid;
+    //player 1
+    private Cell Player1;
+    //player 2
+    private Cell Player2;
+    private Cell turn;
+    private enum Cell {
+        X, O, Empty;
+    }
+    
+    public TicTacToe()
+    {
+     grid = new Cell[][]{
+         {Cell.Empty, Cell.Empty, Cell.Empty},
+         {Cell.Empty, Cell.Empty, Cell.Empty},
+         {Cell.Empty, Cell.Empty, Cell.Empty},
+        };
+     Player1 = Cell.X;
+     Player2 = Cell.O;
+    }
+    
+    public static void main(String[] args) {
+        new TicTacToe();
+    }
+    
+    public void ChangeTurn()
+    {
+      if (turn == Cell.X) {
+            turn = Cell.O;
+        }else{
+            turn = Cell.X;
+        }
+    }
+
+    public void playTicTacToe()
+    {
+       
+
+    }
+    
+    public boolean sameCell(Cell cell1, Cell cell2, Cell cell3) {
+        return ((cell1 != Cell.Empty) && (cell1 == cell2) && (cell2 == cell3));
+    }
+    
+    public boolean checkRow() {
+        for (int i = 0; i < 3; i++) {
+            if(sameCell(grid[i][0], grid[i][1], grid[i][2])) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean checkColumn() {
+        for(int i = 0; i < 3; i++) {
+            if(sameCell(grid[0][i], grid[1][i], grid[2][i])) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean checkDiagonal () {
+        return ((sameCell(grid[0][0], grid[1][1], grid[2][2])) || (sameCell(grid[0][2], grid[1][1], grid[2][0])));
+    }
+    
+    public boolean fullBoard()
+    {
+        
+    }
+    
+     public boolean checkForWin() {
+        return (checkRow() || checkColumn() || checkDiagonal() || fullBoard());
+    }
+    
+    public void drawGrid() {
+        System.out.println("Column 0  |  Column 1  |  Column 2");
+        System.out.println("Row 0|  "+grid[0][0]+" | "+grid[0][1]+" | "+grid[0][2]);
+        System.out.println("     -----------------------");
+        System.out.println("Row 1|  "+grid[1][0]+" | "+grid[1][1]+" | "+grid[1][2]);
+        System.out.println("     -----------------------");
+        System.out.println("Row 2|  "+grid[2][0]+" | "+grid[2][1]+" | "+grid[2][2]);
+        System.out.println("\n");
+    }
+}
 
