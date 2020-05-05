@@ -6,51 +6,82 @@ import java.util.Scanner;
  * @version (27.04.2020)
  */
 public class TicTacToe {
-    //Create grid 
-    private Cell[][] grid;
-    //player 1
-    private Cell Player1;
-    //player 2
-    private Cell Player2;
+    //Create grid
+    private final Cell[][] grid;
     private Cell turn;
+    private Cell player1;
+    private Cell player2;
+
     private enum Cell {
-        X, O, Empty;
+        X, O, Empty
     }
-    
+
     public TicTacToe()
     {
-     grid = new Cell[][]{
-         {Cell.Empty, Cell.Empty, Cell.Empty},
-         {Cell.Empty, Cell.Empty, Cell.Empty},
-         {Cell.Empty, Cell.Empty, Cell.Empty},
+        grid = new Cell[][]{
+                {Cell.Empty, Cell.Empty, Cell.Empty},
+                {Cell.Empty, Cell.Empty, Cell.Empty},
+                {Cell.Empty, Cell.Empty, Cell.Empty},
         };
-     Player1 = Cell.X;
-     Player2 = Cell.O;
+        //player 1
+        Cell player1 = Cell.X;
+        //player 2
+        Cell player2 = Cell.O;
+        drawGrid();
+        playTicTacToe();
+        ChangeTurn();
+        checkForWin();
     }
-    
+
     public static void main(String[] args) {
         new TicTacToe();
     }
-    
+
     public void ChangeTurn()
     {
-      if (turn == Cell.X) {
-            turn = Cell.O;
+        if (turn == player1) {
+            turn = player2;
         }else{
-            turn = Cell.X;
+            turn = player1;
         }
     }
 
     public void playTicTacToe()
     {
-       
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Pick a row: ");
+        Scanner rowIn = new Scanner(System.in);
+        int row = correctInput(rowIn);
+
+        System.out.print("Pick a column: ");
+        Scanner columnIn = new Scanner(System.in);
+        int column = correctInput(columnIn);
+
+        if (grid[row][column].equals(Cell.Empty)) {
+            grid[row][column] = turn;
+        } else {
+            System.out.println("   (!) A player is already in that position try again.\n");
+        }
 
     }
-    
+
+    public int correctInput(Scanner input) {
+        int number;
+        do {
+            System.out.println("Please enter a value between 0 and 2.");
+            while (!input.hasNextInt()) {
+                System.out.println("Impossible input. Please enter an integer from 0-2.");
+                input.next();
+            }
+            number = input.nextInt();
+        } while (number < 0 || number > 2);
+        return number;
+    }
+
     public boolean sameCell(Cell cell1, Cell cell2, Cell cell3) {
         return ((cell1 != Cell.Empty) && (cell1 == cell2) && (cell2 == cell3));
     }
-    
+
     public boolean checkRow() {
         for (int i = 0; i < 3; i++) {
             if(sameCell(grid[i][0], grid[i][1], grid[i][2])) {
@@ -72,16 +103,23 @@ public class TicTacToe {
     public boolean checkDiagonal () {
         return ((sameCell(grid[0][0], grid[1][1], grid[2][2])) || (sameCell(grid[0][2], grid[1][1], grid[2][0])));
     }
-    
+
     public boolean fullBoard()
     {
-        
+        for (Cell[] cell : grid) {
+            for (Cell status : cell) {
+                if (!(status.equals(Cell.Empty))) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
-    
-     public boolean checkForWin() {
+
+    public boolean checkForWin() {
         return (checkRow() || checkColumn() || checkDiagonal() || fullBoard());
     }
-    
+
     public void drawGrid() {
         System.out.println("Column 0  |  Column 1  |  Column 2");
         System.out.println("Row 0|  "+grid[0][0]+" | "+grid[0][1]+" | "+grid[0][2]);
@@ -92,4 +130,3 @@ public class TicTacToe {
         System.out.println("\n");
     }
 }
-
