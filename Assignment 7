@@ -61,9 +61,9 @@ public class Bank {
     }
 }
 
-    public boolean checkPin(Customer customer, int inputPin) {
+    public boolean checkPin(Customer customer, int enteredPin) {
         int cardPin = customer.getCard().getPin();
-        return(inputPin == cardPin);
+        return(enteredPin == cardPin);
 }
 
 
