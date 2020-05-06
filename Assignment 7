@@ -1,0 +1,118 @@
+import java.util.Scanner;
+
+public class ATM {
+    private int selection;
+    public ATM(){
+        displayMainMenu();
+        pickSelection();
+        processSelection();
+    }
+    private void displayMainMenu() {
+        System.out.println("\nMain menu:");
+        System.out.println("1 - View my balance\n");
+        System.out.println("2 - Withdraw cash\n");
+        System.out.println("3 - Deposit funds\n");
+        System.out.println("4 - Exit\n");
+    }
+    private int pickSelection() {
+        this.selection = selection;
+        return selection;
+    }
+
+    private void processSelection() {
+        switch (selection) {
+            case 1:
+                System.out.println("\nCurrent Balance: " );
+                break;
+            case 2:
+                withdraw();
+                break;
+            case 3:
+                deposit();
+                break;
+            case 4:
+                System.out.println("Remove Card Now.");
+        }}
+
+    private void deposit() {
+        System.out.println("How much  is the deposit?");
+        Scanner depositAmount = new Scanner(System.in);
+
+    }
+
+    private void withdraw(){
+        System.out.println("How much would you like to withdraw?");
+        Scanner withdrawAmount = new Scanner(System.in);
+    }
+
+
+}
+
+
+
+
+
+public class Bank {
+    public static void main(String[] args) {
+
+    }
+    public boolean possibleTransaction(){
+
+    }
+}
+
+    public boolean checkPin(Customer customer, int inputPin) {
+        int cardPin = customer.getCard().getPin();
+        return(inputPin == cardPin);
+}
+
+
+
+
+
+
+public class Card {
+    private int cardNumber;
+    private int pin;
+
+    public Card(int cardNum, int pin) {
+        this.cardNumber = cardNumber;
+        this.pin = pin;
+    }
+    public static void main(String[] args) {
+    }
+    public int getCardNumber() {
+        return cardNumber;
+    }
+    public int getPin() {
+        return pin;
+    }
+}
+
+
+
+
+
+
+public class Customer {
+
+    private Card card;
+    private String customerName;
+
+    public Customer(String customerName, Card card) {
+        this.customerName = customerName;
+        this.card = card;
+    }
+    public static void main(String[] args) {
+    }
+    public String getCustomerName() {
+        return customerName;
+    }
+    public void setCustomerName(String CustomerName) {
+        customerName = CustomerName;
+    }
+    public Card getCard() {
+        return card;
+    }
+
+}
