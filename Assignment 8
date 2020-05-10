@@ -1,0 +1,321 @@
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.Random;
+
+public class Gameplay {
+    private Character player;
+    private ArrayList<Rooms> roomList;
+    private boolean endGame;
+
+    public static void main(String[] args) {
+        new Gameplay();
+    }
+    public void Gameplay() {
+        roomList = new ArrayList<>();
+        endGame = false;
+        playGame();
+    }
+    public void welcomeScreen() {
+        System.out.println("\n''```````````````````````````````````````````````````````''");
+        System.out.println("''  Welcome to Harry Potter Text Adventure!''");
+        System.out.println("''  It is set at Hogwarts School of Witchcraft    ''");
+        System.out.println("''  and Wizardry. You must explore and    ''");
+        System.out.println("''  navigate through the rooms to see the objects  ''");
+        System.out.println("''  and mysteries you can uncover. When entering a room  ''");
+        System.out.println("''  there's a small chance you may be sent           ''");
+        System.out.println("''  transported to another room in the castle.           ''");
+        System.out.println("'',,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,''\n");
+    }
+
+    public void playerCreation() {
+        System.out.print("Greetings! What is your name?\n" + ": ");
+        this.player = new Character();
+        System.out.println("It is wonderful to meet you, " + player.getName() + "!\n");
+        player.setRoomLocation(roomList.get(0));
+    }
+    public void playGame() {
+        while(!endGame) {
+            printLocation();
+            printSurroundings();
+            printInventory();
+            printRooms();
+            } else {
+                endGame();
+            }
+        }
+    }
+    public void printLocation() {
+        System.out.println("| Welcome to - "+player.getRoom().getRoomName()+"\n");
+    }
+    
+    public void printSurroundings() {
+        System.out.println("|     ROOM     | "+player.getRoom().getRoomDescription());
+        if(player.getRoom().hasItem()) {
+            System.out.println("|  ROOM ITEMS  | And item has been found: "+player.getRoom().getItem().getItemDescription()+". This was added to your inventory.");
+            playerAddItem();
+        } else {
+            System.out.println("|  ROOM ITEMS  | No Items.");
+        }
+        if(player.getRoom().roomOccupied()) {
+            System.out.println("|   OCCUPANCY  | "+player.getRoom().getPossibilityOccupied());
+        } else {
+            System.out.println("|   OCCUPANCY  | No Occupants.");
+        }
+    }
+    
+    public void playerAddItem() {
+        boolean playerHasItem = false;
+        ArrayList<Items> playerInventory = player.getInventory();
+        int i = 0;
+        if(player.getInventory().size() != 0){
+            while(!playerHasItem && (i <= playerInventory.size()-1)) {
+                if(playerInventory.get(i).equals(player.getRoom().getItem())) {
+                    playerHasItem = true;
+                }
+                i++;
+            }
+        }
+        if(!playerHasItem) {
+            player.setInventory(player.getRoom().getItem());
+            player.getRoom().removeItem();
+        }
+    }
+    
+    public void printInventory() {
+        System.out.print("|   INVENTORY  | ");
+        for(Items i : player.getInventory()) {
+            System.out.print(i.getItemDescription()+", ");
+        }
+    }
+    
+    public void printRooms() {
+        int nextRoom1 = player.getRoom().getNextRoom1();
+        int nextRoom2 = player.getRoom().getNextRoom2();
+        if(nextRoom1 != nextRoom2){
+            System.out.println("\n\n| From this room you can choose to enter rooms "+nextRoom1+"-"+nextRoom2);
+        } else {
+            System.out.println("\n\n| From this room you can choose to enter hallway "+nextRoom1);
+        }
+    }
+    
+    public int selectionPrompt() {
+        System.out.print("| Use arrows to explore (0 to return to main hall. -1 to quit.)\n: ");
+        Scanner getInput = new Scanner(System.in);
+        System.out.println("");
+    }
+
+}
+
+
+
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class Character {
+    private Rooms roomLocation;
+    private String characterName;
+    private ArrayList<Items> inventory;
+
+    public static void main(String[] args) {
+
+    }
+
+    public ArrayList<Items> getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Items item) {
+        inventory.add(item);
+    }
+
+    public Rooms getRoom() {
+        return roomLocation;
+    }
+
+    public void setRoomLocation(Rooms roomLocation) {
+        this.roomLocation = roomLocation;
+    }
+
+    public String getName() {
+        return characterName;
+    }
+
+    public void setCharacterName() {
+        Scanner characterNameInput = new Scanner(System.in);
+        this.characterName = characterNameInput.nextLine();
+    }
+}
+
+
+
+
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.util.Random;
+import java.util.ArrayList;
+
+public class Items {
+    private String itemDescription;
+    private ArrayList<String> itemList;
+
+    public Items() {
+        itemList = new ArrayList<>();
+        newItem();
+        getRandomItem();
+    }
+
+    public static void main(String[] args) {
+
+    }
+    public void getRandomItem() {
+        Random random = new Random();
+        int randInt = random.nextInt(itemList.size());
+        this.itemDescription = itemList.get(randInt);
+    }
+
+
+    public void newItem() {
+    }
+
+
+    public String getItemDescription() {
+        return itemDescription;
+    }
+
+
+    public void setItemDescription(String itemDescription) {
+        this.itemDescription = itemDescription;
+    }
+
+}
+
+
+
+public class Rooms {
+        private String roomNumber;
+        private String roomName;
+        private String roomDescription;
+        private String chanceIsOccupied;
+        private String chanceOfItem;
+        private String possibilityOccupied;
+        private String numOfDoors;
+        private String nextRoom1;
+        private String nextRoom2;
+        private Items roomItem;
+        private double randomOccupied;
+        private double randomItem;
+
+    public void Room(String[] roomData) {
+        this.roomNumber = roomData[0];
+        this.roomName = roomData[1];
+        this.roomDescription = roomData[2];
+        this.chanceIsOccupied = roomData[3];
+        this.chanceOfItem = roomData[4];
+        this.possibilityOccupied = roomData[5];
+        this.numOfDoors = roomData[6];
+        this.nextRoom1 = roomData[7];
+        this.nextRoom2 = roomData[8];
+        randomItem = (Math.random() * 100);
+        createItem();
+        randomOccupied = (Math.random() * 100);
+    }
+
+    public static void main(String[] args) {
+    }
+
+    public boolean roomOccupied() {
+        return !(randomOccupied < Integer.parseInt(chanceIsOccupied));
+    }
+
+    public void createItem() {
+        if(randomItem < Integer.parseInt(chanceOfItem)) {
+            roomItem = new Items();
+        } else {
+            roomItem = null;
+        }
+    }
+
+    public Items getItem() {
+        return roomItem;
+    }
+
+    public void setItem(Items item) {
+        this.roomItem = item;
+    }
+
+    public void removeItem() {
+        this.roomItem = null;
+    }
+
+    public boolean hasItem() {
+        return roomItem != null;
+    }
+
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
+    }
+
+    public String getRoomDescription() {
+        return roomDescription;
+    }
+
+    public void setRoomDescription(String roomDescription) {
+        this.roomDescription = roomDescription;
+    }
+
+
+    public String getPossibilityOccupied() {
+        return possibilityOccupied;
+    }
+
+    public void setIfOccupied(String possibilityOccupied) {
+        this.possibilityOccupied = possibilityOccupied;
+    }
+
+    public Integer getChanceIsOccupied() {
+        return Integer.parseInt(chanceIsOccupied);
+    }
+
+    public void setChanceIsOccupied(String chanceIsOccupied) {
+        this.chanceIsOccupied = chanceIsOccupied;
+    }
+
+    public Integer getChanceOfItem() {
+        return Integer.parseInt(chanceOfItem);
+    }
+
+    public void setChanceOfItem(String chanceOfItem) {
+        this.chanceOfItem = chanceOfItem;
+    }
+
+    public Integer getNumOfDoors() {
+        return Integer.parseInt(numOfDoors);
+    }
+
+    public void setNumOfDoors(String numOfDoors) {
+        this.numOfDoors = numOfDoors;
+    }
+
+    // Gets the lowest adjacent room number
+    public Integer getNextRoom1() {
+        return Integer.parseInt(nextRoom1);
+    }
+
+    public void setNextRoom1(String nextRoom1) {
+        this.nextRoom2 = nextRoom1;
+    }
+
+    public Integer getNextRoom2() {
+        return Integer.parseInt(nextRoom2);
+    }
+
+    public void setNextRoom2(String nextRoom2) {
+        this.nextRoom2 = nextRoom2;
+    }
+}
